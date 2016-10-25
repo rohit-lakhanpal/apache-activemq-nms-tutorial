@@ -61,12 +61,12 @@ For the purpose of this tutorial you will be developing a simple chat client app
 
 ![Application Overview](https://raw.githubusercontent.com/rohit-lakhanpal/apache-activemq-nms-tutorial/master/images/application-overview.png)
 
-As shown in the diagram above, you will be developing a .NET solution (Apache.ActiveMq.Nms.Tutorial.sln) with the following projects:
-* Apache.ActiveMq.Nms.Tutorial.Chat.Ui
+As shown in the diagram above, you will be developing a .NET solution (Tutorial.sln) with the following projects:
+* Tutorial.Chat.Ui
     * This project is a simple windows forms project which will server as the UI for the appliction.
     * The UI will accept uer inputs & send/enqueue them to a Queue ("App.Message.Processing.Queue") for being processed.
     * The UI will also be listening/subscrbing to a Topic ("App.Message.Chat.Topic") for processed messages.
-* Apache.ActiveMq.Nms.Tutorial.ProfanityFilter.Svc
+* Tutorial.ProfanityFilter.Svc
     * This project is a simple windows service applicaion which will be responsible for accepting messages from the UI and running them through a simple profanity filter.
     * The service will listen/dequeue messages from the aforementioned Queue ("App.Message.Processing.Queue") for processing messages.
     * The service will then send/publish processed messages to the aforementioned Topic ("App.Message.Chat.Topic") for being consumed by the UI.
