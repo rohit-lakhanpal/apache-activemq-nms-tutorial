@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Apache.NMS;
@@ -21,23 +22,23 @@ namespace Tutorial.Chat.Ui
         /// <summary>
         /// The producer
         /// </summary>
-        private IMessageProducer producer;
+        private IMessageProducer _producer;
         /// <summary>
         /// The consumer
         /// </summary>
-        private IMessageConsumer consumer;
+        private IMessageConsumer _consumer;
         /// <summary>
         /// The session
         /// </summary>
-        private ISession session;
+        private ISession _session;
         /// <summary>
         /// The queue
         /// </summary>
-        private const string queue = "queue://App.Message.Processing.Queue";
+        private const string Queue = "queue://App.Message.Processing.Queue";
         /// <summary>
         /// The topic
         /// </summary>
-        private const string topic = "topic://App.Message.Chat.Topic";
+        private const string Topic = "topic://App.Message.Chat.Topic";
 
 
         /// <summary>
@@ -74,6 +75,35 @@ namespace Tutorial.Chat.Ui
         {
             InitializeComms();
             InitializeComponent();
+            (new Thread(InitialiseListener) {IsBackground = true}).Start();
+        }
+
+        /// <summary>
+        /// Initialises the listener.
+        /// </summary>
+        /// <exception cref="System.NotImplementedException"></exception>
+        private void InitialiseListener()
+        {
+            while (true)
+            {
+                var message = (ITextMessage)_consumer.Receive();
+                if (message == null) continue;
+                if (string.IsNullOrWhiteSpace(message.Text)) continue;
+                AppendOutput(message.Text);
+            }
+        }
+
+        /// <summary>
+        /// Appends the output.
+        /// </summary>
+        /// <param name="value">The value.</param>
+        public void AppendOutput(string value)
+        {
+            this.Invoke((MethodInvoker)delegate ()
+            {
+                outputTextBox.AppendText(value);
+                outputTextBox.AppendText(Environment.NewLine);
+            });
         }
 
         /// <summary>
@@ -88,11 +118,11 @@ namespace Tutorial.Chat.Ui
             var factory = new NMSConnectionFactory(connecturi);
             var connection = factory.CreateConnection(userName, password);
             connection.Start();
-            session = connection.CreateSession();
-            var queueDestination = SessionUtil.GetDestination(session, queue);
-            var topicDestination = SessionUtil.GetDestination(session, topic);
-            consumer = session.CreateConsumer(topicDestination);
-            producer = session.CreateProducer(queueDestination);
+            _session = connection.CreateSession();
+            var queueDestination = SessionUtil.GetDestination(_session, Queue);
+            var topicDestination = SessionUtil.GetDestination(_session, Topic);
+            _consumer = _session.CreateConsumer(topicDestination);
+            _producer = _session.CreateProducer(queueDestination);
         }
 
         /// <summary>
@@ -122,8 +152,8 @@ namespace Tutorial.Chat.Ui
         private void SendMessageToProcessingQueue(string message)
         {
             // Create a text message
-            var request = producer.CreateTextMessage(message);
-            producer.Send(request);
+            var request = _producer.CreateTextMessage(message);
+            _producer.Send(request);
         }
     }
 }
