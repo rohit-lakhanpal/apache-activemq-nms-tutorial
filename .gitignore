@@ -1,3 +1,4 @@
 /solution/*/**/obj
 /solution/*/**/bin
 /solution/*/**/.vs
+/solution/*/**/packages

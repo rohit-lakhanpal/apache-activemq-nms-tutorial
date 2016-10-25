@@ -16,6 +16,12 @@ namespace Tutorial.Chat.Ui
     /// <seealso cref="System.Windows.Forms.Form" />
     public partial class ChatForm : Form
     {
+        /// <summary>
+        /// Gets or sets the form title.
+        /// </summary>
+        /// <value>
+        /// The form title.
+        /// </value>
         public string FormTitle { get; set; }
 
         /// <summary>
@@ -52,7 +58,17 @@ namespace Tutorial.Chat.Ui
         /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
         private void submitButton_Click(object sender, EventArgs e)
         {
+            // On pressing submit, the application should send the contents of the input box over
+            var inputText = this.inputTextBox.Text;
+            if (!string.IsNullOrWhiteSpace(inputText))
+            {
+                SendMessageToProcessingQueue(inputText);
+            }
+        }
 
+        private void SendMessageToProcessingQueue(string text)
+        {
+            throw new NotImplementedException();
         }
     }
 }
