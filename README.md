@@ -27,7 +27,7 @@ Here are some of the top reasons for using message queues. A more detailed expla
 
 Before we begin, its important to understand a few basic concepts.
 
-## Basic Conecpts: 
+## Basic Concepts: 
 ### Characteristics of messaging services
 * Messages can be consumed sync or async
 * Consumers can filter which message they receive
@@ -55,9 +55,19 @@ Before we begin, its important to understand a few basic concepts.
     * Only subscribers who had an active subscription at the time the broker receives the message will get a copy of the message.
 
 # What we're trying to develop
-For the purpose of this tutorial you will be developing a simple chat client application.
+For the purpose of this tutorial you will be developing a simple chat client application as shown in the image below.
 
-You can run multiple instances of the client & see them communicate via the queues/topics.
+![Application Overview](https://raw.githubusercontent.com/rohit-lakhanpal/apache-activemq-nms-tutorial/master/images/application-iverview.png)
+
+As shown in the diagram above, you will be developing a .NET solution (Apache.ActiveMq.Nms.tutorial.sln) with the following projects:
+* Apache.ActiveMq.Nms.tutorial.Chat.Ui
+    * This project is a simple windows forms project which will server as the UI for the appliction.
+    * The UI will accept uer inputs & send/enqueue them to a Queue ("App.Message.Processing.Queue") for being processed.
+    * The UI will also be listening/subscrbing to a Topic ("App.Message.Chat.Topic") for processed messages.
+* Apache.ActiveMq.Nms.tutorial.ProfanityFilter.Svc
+    * This project is a simple windows service applicaion which will be responsible for accepting messages from the UI and running them through a simple profanity filter.
+    * The service will listen/dequeue messages from the aforementioned Queue ("App.Message.Processing.Queue") for processing messages.
+    * The service will then send/publish processed messages to the aforementioned Topic ("App.Message.Chat.Topic") for being consumed by the UI.
 
 # Before you begin
 Before you begin, you will need to install some prerequisites to get this working.
