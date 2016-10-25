@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tutorial.ProfanityFilter.Sv
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tutorial.Chat.Ui", "Tutorial.Chat.Ui\Tutorial.Chat.Ui.csproj", "{D54187E5-2830-4BA3-B004-223EEB80FE3E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tutorial.ProfanityFilter.Svc.Test", "Tutorial.ProfanityFilter.Svc.Test\Tutorial.ProfanityFilter.Svc.Test.csproj", "{396A583B-3B58-43CD-ABCE-AB841116716A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{D54187E5-2830-4BA3-B004-223EEB80FE3E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D54187E5-2830-4BA3-B004-223EEB80FE3E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D54187E5-2830-4BA3-B004-223EEB80FE3E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{396A583B-3B58-43CD-ABCE-AB841116716A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{396A583B-3B58-43CD-ABCE-AB841116716A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{396A583B-3B58-43CD-ABCE-AB841116716A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{396A583B-3B58-43CD-ABCE-AB841116716A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

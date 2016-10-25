@@ -28,7 +28,7 @@ namespace Tutorial.Chat.Ui
     /// This class facilitates running multiple instances of the Form.
     /// </summary>
     /// <seealso cref="System.Windows.Forms.ApplicationContext" />
-    class MultiFormContext : ApplicationContext
+    internal class MultiFormContext : ApplicationContext
     {
         /// <summary>
         /// The open forms{CC2D43FA-BBC4-448A-9D0B-7B57ADF2655C}

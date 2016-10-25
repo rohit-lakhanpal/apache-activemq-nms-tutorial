@@ -26,6 +26,7 @@ namespace Tutorial.Chat.Ui
         {
             this.FormTitle = name;
             this.Text = $"Chat Application: {name}";
+            this.ActiveControl = inputTextBox;
         }
 
         /// <summary>
@@ -42,6 +43,16 @@ namespace Tutorial.Chat.Ui
         public ChatForm()
         {
             InitializeComponent();
+        }
+
+        /// <summary>
+        /// Handles the Click event of the submitButton control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
+        private void submitButton_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
