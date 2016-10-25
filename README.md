@@ -57,7 +57,7 @@ Before we begin, its important to understand a few basic concepts.
 # What we're trying to develop
 For the purpose of this tutorial you will be developing a simple chat client application as shown in the image below.
 
-![Application Overview](https://raw.githubusercontent.com/rohit-lakhanpal/apache-activemq-nms-tutorial/master/images/application-iverview.png)
+![Application Overview](https://raw.githubusercontent.com/rohit-lakhanpal/apache-activemq-nms-tutorial/master/images/application-overview.png)
 
 As shown in the diagram above, you will be developing a .NET solution (Apache.ActiveMq.Nms.tutorial.sln) with the following projects:
 * Apache.ActiveMq.Nms.tutorial.Chat.Ui
