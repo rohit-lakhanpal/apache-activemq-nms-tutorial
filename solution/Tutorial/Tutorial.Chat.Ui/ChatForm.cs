@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Apache.NMS;
+using Apache.NMS.Util;
 
 namespace Tutorial.Chat.Ui
 {
@@ -16,6 +18,28 @@ namespace Tutorial.Chat.Ui
     /// <seealso cref="System.Windows.Forms.Form" />
     public partial class ChatForm : Form
     {
+        /// <summary>
+        /// The producer
+        /// </summary>
+        private IMessageProducer producer;
+        /// <summary>
+        /// The consumer
+        /// </summary>
+        private IMessageConsumer consumer;
+        /// <summary>
+        /// The session
+        /// </summary>
+        private ISession session;
+        /// <summary>
+        /// The queue
+        /// </summary>
+        private const string queue = "queue://App.Message.Processing.Queue";
+        /// <summary>
+        /// The topic
+        /// </summary>
+        private const string topic = "topic://App.Message.Chat.Topic";
+
+
         /// <summary>
         /// Gets or sets the form title.
         /// </summary>
@@ -48,7 +72,27 @@ namespace Tutorial.Chat.Ui
         /// </summary>
         public ChatForm()
         {
+            InitializeComms();
             InitializeComponent();
+        }
+
+        /// <summary>
+        /// Initializes the comms.
+        /// </summary>
+        private void InitializeComms()
+        {
+            const string userName = "admin";
+            const string password = "admin";
+            const string uri = "activemq:tcp://localhost:61616";
+            var connecturi = new Uri(uri);
+            var factory = new NMSConnectionFactory(connecturi);
+            var connection = factory.CreateConnection(userName, password);
+            connection.Start();
+            session = connection.CreateSession();
+            var queueDestination = SessionUtil.GetDestination(session, queue);
+            var topicDestination = SessionUtil.GetDestination(session, topic);
+            consumer = session.CreateConsumer(topicDestination);
+            producer = session.CreateProducer(queueDestination);
         }
 
         /// <summary>
@@ -62,13 +106,24 @@ namespace Tutorial.Chat.Ui
             var inputText = this.inputTextBox.Text;
             if (!string.IsNullOrWhiteSpace(inputText))
             {
-                SendMessageToProcessingQueue(inputText);
+                var message = $"{this.FormTitle}: {inputText}";
+                SendMessageToProcessingQueue(message);
             }
+            // Set input textbox to empty & set focus to input text box
+            this.inputTextBox.Text = string.Empty;
+            this.ActiveControl = this.inputTextBox;
         }
 
-        private void SendMessageToProcessingQueue(string text)
+        /// <summary>
+        /// Sends the message to processing queue.
+        /// </summary>
+        /// <param name="message">The message.</param>
+        /// <exception cref="System.NotImplementedException"></exception>
+        private void SendMessageToProcessingQueue(string message)
         {
-            throw new NotImplementedException();
+            // Create a text message
+            var request = producer.CreateTextMessage(message);
+            producer.Send(request);
         }
     }
 }
