@@ -80,35 +80,35 @@ Before you begin, you will need to install some prerequisites to get this workin
 * To help you with the setup of ActiveMQ, you can lookup the help doco at [http://activemq.apache.org/getting-started.html](http://activemq.apache.org/getting-started.html).
 
 ## Start ActiveMQ
-1. You will need to navigate to the appropriate folder within the "bin" directory & run the activemq batch/script. In my case, its "apache-activemq-5.14.1-bin\apache-activemq-5.14.1\bin\win64\activemq.bat"
-2. On startup, the console should give you the different ports where activemq is listening. In my case it was:
-    > jvm 1    |  INFO | Apache ActiveMQ 5.14.1 (localhost, ID:localhost-56683-1476933442897-0:1) is starting
+    1. You will need to navigate to the appropriate folder within the "bin" directory & run the activemq batch/script. In my case, its "apache-activemq-5.14.1-bin\apache-activemq-5.14.1\bin\win64\activemq.bat"
+    2. On startup, the console should give you the different ports where activemq is listening. In my case it was:
+        > jvm 1    |  INFO | Apache ActiveMQ 5.14.1 (localhost, ID:localhost-56683-1476933442897-0:1) is starting
 
-    > jvm 1    |  INFO | Listening for connections at: tcp://localhost:61616?maximumConnections=1000&wireFormat.maxFrameSize=104857600
+        > jvm 1    |  INFO | Listening for connections at: tcp://localhost:61616?maximumConnections=1000&wireFormat.maxFrameSize=104857600
 
-    > jvm 1    |  INFO | Connector openwire started
+        > jvm 1    |  INFO | Connector openwire started
 
-    > jvm 1    |  INFO | Listening for connections at: amqp://localhost:5672?maximumConnections=1000&wireFormat.maxFrameSize=104857600
+        > jvm 1    |  INFO | Listening for connections at: amqp://localhost:5672?maximumConnections=1000&wireFormat.maxFrameSize=104857600
 
-    > jvm 1    |  INFO | Connector amqp started
+        > jvm 1    |  INFO | Connector amqp started
 
-    > jvm 1    |  INFO | Listening for connections at: stomp://localhost:61613?maximumConnections=1000&wireFormat.maxFrameSize=104857600
+        > jvm 1    |  INFO | Listening for connections at: stomp://localhost:61613?maximumConnections=1000&wireFormat.maxFrameSize=104857600
 
-    > jvm 1    |  INFO | Connector stomp started
+        > jvm 1    |  INFO | Connector stomp started
 
-    > jvm 1    |  INFO | Listening for connections at: mqtt://localhost:1883?maximumConnections=1000&wireFormat.maxFrameSize=104857600
+        > jvm 1    |  INFO | Listening for connections at: mqtt://localhost:1883?maximumConnections=1000&wireFormat.maxFrameSize=104857600
 
-    > jvm 1    |  INFO | Connector mqtt started
+        > jvm 1    |  INFO | Connector mqtt started
 
-    Additionally, the web console should be available at port 8161 based on the following log line:
-    > jvm 1    |  INFO | ActiveMQ WebConsole available at http://localhost:8161/
-    
-    To test your installation, you can:
-    * open the above link in a browser
-    * Click "anage ActiveMQ broker"
-    * Enter the default username & password which is admin
-    * Play around with the UI. This will help you better understand how to administer the message broker.
-    ![Message Oriented Middleware](http://blogs.mulesoft.com/wp-content/gallery/activemq/activemq-admin.png)
+        Additionally, the web console should be available at port 8161 based on the following log line:
+        > jvm 1    |  INFO | ActiveMQ WebConsole available at http://localhost:8161/
+        
+        To test your installation, you can:
+        * open the above link in a browser
+        * Click "Manage ActiveMQ broker"
+        * Enter the default username & password which is admin
+        * Play around with the UI. This will help you better understand how to administer the message broker.
+        ![Message Oriented Middleware](http://blogs.mulesoft.com/wp-content/gallery/activemq/activemq-admin.png)
 
 # Tutorial Steps
 The tutorial steps have been listed on the wiki page available at [https://github.com/rohit-lakhanpal/apache-activemq-nms-tutorial/wiki/Tutorial](https://github.com/rohit-lakhanpal/apache-activemq-nms-tutorial/wiki/Tutorial)
