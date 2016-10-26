@@ -73,13 +73,13 @@ As shown in the diagram above, you will be developing a .NET solution (Tutorial.
 
 # Before you begin
 Before you begin, you will need to install some prerequisites to get this working.
-1. You will need JDK (You can google the relevant help doco).
+* You will need JDK (You can google the relevant help doco).
     * Make sure post installation the JDK bin is added to your path.
     * You will also need to setup the "JAVA_HOME" path. I'm on a windows machine so mine is set to "C:\Program Files\Java\jdk1.8.0_91"
-2. You will need to download the latest release of Active MQ available [here](http://activemq.apache.org/download.html).
-3. To help you with the setup of ActiveMQ, you can lookup the help doco at [http://activemq.apache.org/getting-started.html](http://activemq.apache.org/getting-started.html).
+* You will need to download the latest release of Active MQ available [here](http://activemq.apache.org/download.html).
+* To help you with the setup of ActiveMQ, you can lookup the help doco at [http://activemq.apache.org/getting-started.html](http://activemq.apache.org/getting-started.html).
 
-# Start ActiveMQ
+## Start ActiveMQ
 1. You will need to navigate to the appropriate folder within the "bin" directory & run the activemq batch/script. In my case, its "apache-activemq-5.14.1-bin\apache-activemq-5.14.1\bin\win64\activemq.bat"
 2. On startup, the console should give you the different ports where activemq is listening. In my case it was:
     > jvm 1    |  INFO | Apache ActiveMQ 5.14.1 (localhost, ID:localhost-56683-1476933442897-0:1) is starting
