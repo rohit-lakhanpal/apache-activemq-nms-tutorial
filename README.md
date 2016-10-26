@@ -105,7 +105,7 @@ Before you begin, you will need to install some prerequisites to get this workin
     
     To test your installation, you can:
     * open the above link in a browser
-    * Click "anage ActiveMQ broker"
+    * Click "Manage ActiveMQ broker"
     * Enter the default username & password which is admin
     * Play around with the UI. This will help you better understand how to administer the message broker.
     ![Message Oriented Middleware](http://blogs.mulesoft.com/wp-content/gallery/activemq/activemq-admin.png)
